@@ -1,0 +1,5 @@
+﻿  LuaTest.cpp
+d:\_testspace\c\luatest\luatest\luatest\luatest.cpp(33): warning C4477: 'printf' : format string '%lld' requires an argument of type '__int64', but variadic argument 1 has type 'lua_Number'
+d:\_testspace\c\luatest\luatest\luatest\luatest.cpp(53): warning C4101: 'buff': unreferenced local variable
+d:\_testspace\c\luatest\luatest\luatest\luatest.cpp(54): warning C4101: 'err': unreferenced local variable
+  LuaTest.vcxproj -> D:\_TestSpace\C\LuaTest\LuaTest\Debug\LuaTest.exe
