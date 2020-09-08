@@ -8,6 +8,7 @@ extern "C"
 #include "Lua/lua.h"
 #include "Lua/lauxlib.h"
 #include "Lua/lualib.h"
+#include "Lua/lstate.h"
 }
 
 static void stackDump(lua_State *L)
@@ -56,35 +57,57 @@ int main()
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
 
-	//while (fgets(buff,sizeof(buff),stdin) != NULL)
-	//{
-	//	err = luaL_dofile(L, "Test.lua");
-	//	if (err)
-	//	{
-	//		fprintf(stderr,"%s\n",lua_tostring(L,-1));
-	//		lua_pop(L, 1);
-	//	}
-	//}
+	while (fgets(buff, sizeof(buff), stdin) != NULL)
+	{
+		err = luaL_dofile(L, "..\\Test.lua");
+		if (err)
+		{
+			fprintf(stderr, "%s\n", lua_tostring(L, -1));
+			lua_pop(L, 1);
+		}
 
-	lua_pushboolean(L, 1);
-	lua_pushnumber(L, 10);
-	lua_pushnil(L);
-	lua_pushstring(L, "Hello");
-	stackDump(L);
+		//GCObject* next = nullptr;
+		//global_State *g = G(L);
+		//next = g->finobj;
 
-	lua_pushvalue(L, -1); 	stackDump(L);
+		//while (next != nullptr)
+		//{
+		//	printf("%p\n",next);
+		//	next = next->next;
+		//}
 
-	lua_replace(L, 2); stackDump(L);
+		//printf("-------------Gray--------------------\n");
 
-	lua_rotate(L, 2, -1); stackDump(L);
+		//GCObject* gray = nullptr;
+		//gray = g->gray;
+
+		//while (gray != nullptr)
+		//{
+		//	printf("%p\n", gray);
+		//	gray = gray->next;
+		//}
+	}
+
+	//lua_pushboolean(L, 1);
+	//lua_pushnumber(L, 10);
+	//lua_pushnil(L);
+	//lua_pushstring(L, "Hello");
+	//stackDump(L);
+
+	//lua_pushvalue(L, -1); 	stackDump(L);
+
+	//lua_replace(L, 2); stackDump(L);
+
+	//lua_rotate(L, 2, -1); stackDump(L);
 
 
-	int stackNum = lua_gettop(L);
+	//int stackNum = lua_gettop(L);
 
-	printf("%d", stackNum);
+	//printf("%d", stackNum);
 
-	lua_close(L);
 	getchar();
+	lua_close(L);
+
 
 	return 0;
 }
